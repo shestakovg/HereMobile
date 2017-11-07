@@ -60,6 +60,19 @@ public class CalendarFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+        /*********************************************************************************************/
+        //Filling lists
+        ListView todayList = view.findViewById(R.id.lvCalendarToday);
+        ListView nextWeekList = view.findViewById(R.id.lvCalendarNextWeek);
+        try {
+            CalendarListAdapter calendarListAdapter =  new CalendarListAdapter(getActivity(), true);
+            todayList.setAdapter(calendarListAdapter);
+            CalendarListAdapter calendarListNextWeekAdapter =  new CalendarListAdapter(getActivity(), false);
+            nextWeekList.setAdapter(calendarListNextWeekAdapter);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        /*********************************************************************************************/
         mapContainerLayout = (LinearLayout) view.findViewById(R.id.mapContainerLayout);
         //TableRow mapContainerLayout =  view.findViewById(R.id.mapRowCalendar);
         DisplayMetrics metrics = new DisplayMetrics();
@@ -79,7 +92,7 @@ public class CalendarFragment extends Fragment {
         mapContainerLayout =  view.findViewById(R.id.mapContainerToday);
         paramsContainer = mapContainerLayout.getLayoutParams();
         paramsContainer.width=width;
-        paramsContainer.height= ((Double) ( height / 5.0)).intValue();
+        paramsContainer.height= ((Double) (  height /(todayList.getCount()== 1 ? 4.5 : 3.0))).intValue();
         availableHeight -= paramsContainer.height;
         mapContainerLayout.setLayoutParams(paramsContainer);
 
@@ -95,16 +108,7 @@ public class CalendarFragment extends Fragment {
 //                    public void onClick(View v) {testDbClick(v);}
 //                }
 //        );
-        ListView todayList = view.findViewById(R.id.lvCalendarToday);
-        ListView nextWeekList = view.findViewById(R.id.lvCalendarNextWeek);
-        try {
-            CalendarListAdapter calendarListAdapter =  new CalendarListAdapter(getActivity(), true);
-            todayList.setAdapter(calendarListAdapter);
-            CalendarListAdapter calendarListNextWeekAdapter =  new CalendarListAdapter(getActivity(), false);
-            nextWeekList.setAdapter(calendarListNextWeekAdapter);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
         return view;
     }
 

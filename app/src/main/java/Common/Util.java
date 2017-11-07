@@ -18,4 +18,26 @@ public class Util {
         t.setTime(dt);
         return t;
     }
+
+    public static String getDateForCalendarPage(Calendar calendar) {
+        return Integer.toString(calendar.get(Calendar.DAY_OF_MONTH))+" "+ GetMonthName(calendar.get(Calendar.MONTH));
+    }
+
+    private static String GetMonthName(int month) {
+        switch (month+1 ) {
+            case 1: return "Jan";
+            case 2: return "Feb";
+            case 3: return "Mar";
+            case 4: return "Apr";
+            case 5: return "May";
+            case 6: return "Jun";
+            case 7: return "Jul";
+            case 8: return "Aug";
+            case 9: return "Sep";
+            case 10: return "Oct";
+            case 11: return "Nov";
+            case 12: return "Dec";
+        }
+        return "";
+    }
 }

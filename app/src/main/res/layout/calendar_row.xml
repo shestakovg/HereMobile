@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="6pt"
+    android:layout_marginBottom="2pt"
     >
     <LinearLayout
         android:layout_width="fill_parent"
@@ -21,7 +22,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="8 Jan"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="#0f1621"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/calendarRowTvTime"
@@ -32,9 +35,11 @@
                 android:textSize="12sp" />
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@drawable/border"
             android:orientation="vertical">
 
             <TextView

@@ -92,6 +92,7 @@ public class CalendarListAdapter extends BaseAdapter {
             view = lInflater.inflate(R.layout.calendar_row,viewGroup, false);
         }
         CalendarRow calendarRow = (CalendarRow) getItem(i);
+        ((TextView) view.findViewById(R.id.calendarRowTvDate)).setText(Util.getDateForCalendarPage(calendarRow.getStartDate()));
         ((TextView) view.findViewById(R.id.calendarRowTvTitle)).setText(calendarRow.getTitle());
         ((TextView) view.findViewById(R.id.calendarRowTvPickupPoint)).setText(calendarRow.getPickupPoint());
         ((TextView) view.findViewById(R.id.calendarRowTvDestination)).setText(calendarRow.getDestination());
