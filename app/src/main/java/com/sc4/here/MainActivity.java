@@ -1,6 +1,7 @@
 package com.sc4.here;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         requestPermissions();
         setFragment(ProfileFragment.GetInstance());
+        Activity act = this;
+
     }
 
     private void setFragment(Fragment fragment)
