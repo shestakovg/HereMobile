@@ -13,8 +13,9 @@ import java.util.Locale;
 public class Util {
     public static Calendar getCalendarFromString(String dateTimeString) throws ParseException {
         Calendar t = new GregorianCalendar();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date dt = sdf.parse(dateTimeString.substring(0,10)); //replace 4 with the column index
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        //java.util.Date dt = sdf.parse(dateTimeString.substring(0,10)); //replace 4 with the column index
+        java.util.Date dt = sdf.parse(dateTimeString);
         t.setTime(dt);
         return t;
     }
@@ -23,6 +24,31 @@ public class Util {
         return Integer.toString(calendar.get(Calendar.DAY_OF_MONTH))+" "+ GetMonthName(calendar.get(Calendar.MONTH));
     }
 
+    public static String getTimeForCalendarPage(Calendar calendar) {
+        final SimpleDateFormat format = new SimpleDateFormat("hh:mm a", Locale.ENGLISH);
+        return format.format(calendar.getTime());
+        //return Integer.toString(calendar.get(Calendar.DAY_OF_MONTH))+" "+ GetMonthName(calendar.get(Calendar.MONTH));
+    }
+
+    public static String getPeriodForNotificationRow(Calendar startDate, Calendar endDate) {
+        String result;
+        int firstDate = startDate.get(Calendar.DAY_OF_MONTH);
+        int secondDate = endDate.get(Calendar.DAY_OF_MONTH);
+        if (firstDate == secondDate) {
+            result = Integer.toString(firstDate);
+        }
+        else {
+            result = Integer.toString(firstDate)+"-"+Integer.toString(secondDate);
+        }
+//        if (result.length()<5) {
+//            for (int i = 0; i<5-result.length(); i++)  result+=" ";
+//        }
+        return result;
+    }
+
+    public static String getMonthName(Calendar calendar) {
+        return GetMonthName(calendar.get(Calendar.MONTH));
+    }
     private static String GetMonthName(int month) {
         switch (month+1 ) {
             case 1: return "Jan";

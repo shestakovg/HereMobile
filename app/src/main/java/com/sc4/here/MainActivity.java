@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
 //        if (this.currentFragmnet!=null)
 //            setFragment(this.currentFragmnet);
 //        else
-            setFragment(ProfileFragment.GetInstance());
-        Activity act = this;
+        setFragment(ProfileFragment.GetInstance());
+        //Activity act = this;
 
     }
 

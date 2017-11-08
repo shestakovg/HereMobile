@@ -19,37 +19,36 @@ import Model.CalendarRow;
 import db.DatabaseHelper;
 
 /**
- * Created by gshestakov on 11/7/2017.
+ * Created by gshestakov on 11/8/2017.
  */
 
-public class CalendarListAdapter extends BaseAdapter {
+public class NotificationListAdapter  extends BaseAdapter {
     private Context context;
     private LayoutInflater lInflater;
     private ArrayList<CalendarRow> calendarRows = new ArrayList<>();
-    private boolean todayList = true;
+    private boolean newNotification = true;
     private DatabaseHelper dbHelper;
 
-    public CalendarListAdapter(Context context, boolean todayList) throws ParseException {
+    public NotificationListAdapter(Context context, boolean newNotification) throws ParseException {
         this.context = context;
-        this.todayList = todayList;
+        this.newNotification = newNotification;
         this.dbHelper = new DatabaseHelper(context);
         lInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.fillCalendarList();
+        this.fillList();
     }
 
-    private void fillCalendarList() throws ParseException {
+    private void fillList() throws ParseException {
         String query = "select id, Title ,StartDate  ,EndDate   ,Duration   ,Address   ,GuestCount   ," +
                 "Status   ,PickupPoint   ,Destination, StartingTime from Gathering ";
-        if (todayList) {
-            query+= "\n where StartDate ='2017-01-01 00:00:00.000'";
+        if (newNotification) {
+            query+= "\nwhere Status='new'";
         }
         else {
-            query+= "\n where strftime('%s', StartDate )>= strftime('%s','now')";
+            query+= "\n where Status<>'new'";
         }
         //query+= "\norder by strftime('yyyy-MM-dd HH:mm:ss.SSS', StartDate)";
-       // query+= "\norder by strftime('yyyy-MM-dd',substr( StartDate,0,10)) desc";
-        query+="\nand Status<>'new'";
+        // query+= "\norder by strftime('yyyy-MM-dd',substr( StartDate,0,10)) desc";
         query+="\norder by strftime('%s', StartDate )";
         SQLiteDatabase db = dbHelper.open();
         Cursor cursor =      db.rawQuery( query , null);
@@ -72,9 +71,7 @@ public class CalendarListAdapter extends BaseAdapter {
         }
 
         db.close();
-
     }
-
 
     @Override
     public int getCount() {
@@ -94,16 +91,14 @@ public class CalendarListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if (view == null) {
-            view = lInflater.inflate(R.layout.calendar_row,viewGroup, false);
+            view = lInflater.inflate(R.layout.notification_row,viewGroup, false);
         }
         CalendarRow calendarRow = (CalendarRow) getItem(i);
-        ((TextView) view.findViewById(R.id.calendarRowTvDate)).setText(Util.getDateForCalendarPage(calendarRow.getStartDate()));
-        ((TextView) view.findViewById(R.id.calendarRowTvTime)).setText(Util.getTimeForCalendarPage(calendarRow.getStartingTime()));
+        ((TextView) view.findViewById(R.id.calendarRowTvDate)).setText(Util.getPeriodForNotificationRow(calendarRow.getStartDate(), calendarRow.getEndDate()));
+        ((TextView) view.findViewById(R.id.calendarRowTvTime)).setText(Util.getMonthName(calendarRow.getStartDate()));
         ((TextView) view.findViewById(R.id.calendarRowTvTitle)).setText(calendarRow.getTitle());
-        ((TextView) view.findViewById(R.id.calendarRowTvPickupPoint)).setText(calendarRow.getPickupPoint());
-        ((TextView) view.findViewById(R.id.calendarRowTvDestination)).setText(calendarRow.getDestination());
+        ((TextView) view.findViewById(R.id.calendarRowTvDestinationPoint)).setText(calendarRow.getAddress());
+
         return view;
     }
-
-
 }

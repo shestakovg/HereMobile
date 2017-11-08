@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static String DB_PATH;
     private static final String DATABASE_NAME = "here.db";
     private Context myContext;
-    private static  int dbVersion = 14;
+    private static  int dbVersion = 20;
 
 
     public DatabaseHelper(Context context) {

@@ -17,6 +17,16 @@ public class CalendarRow {
     private String status;
     private String PickupPoint;
     private String Destination;
+    private Calendar StartingTime;
+
+    public Calendar getStartingTime() {
+        return StartingTime;
+    }
+
+    public void setStartingTime(Calendar startingTime) {
+        StartingTime = startingTime;
+    }
+
     public int getId() {
         return Id;
     }
