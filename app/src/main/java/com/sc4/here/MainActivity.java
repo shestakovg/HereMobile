@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
-
+    private Fragment currentFragmnet;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -56,9 +56,19 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         requestPermissions();
-        setFragment(ProfileFragment.GetInstance());
+//        if (this.currentFragmnet!=null)
+//            setFragment(this.currentFragmnet);
+//        else
+            setFragment(ProfileFragment.GetInstance());
         Activity act = this;
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (this.currentFragmnet!= null)
+            setFragment(currentFragmnet);
     }
 
     private void setFragment(Fragment fragment)
@@ -67,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
         fragmentTransaction.commit();
+        this.currentFragmnet = fragment;
     }
 
     private void requestPermissions() {
