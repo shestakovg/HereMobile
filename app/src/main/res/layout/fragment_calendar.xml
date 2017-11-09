@@ -48,16 +48,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:orientation="vertical">
-                <TextView
-                    android:padding="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Today"
-                    android:textColor="@android:color/background_dark"
-                    android:background="#eff3f3"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:paddingLeft="70dp"
 
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Today"
+                        android:textColor="@android:color/background_dark"
+                        android:background="#eff3f3"
+                        android:textStyle="bold" />
                 <ListView
                     android:id="@+id/lvCalendarToday"
                     android:layout_width="match_parent"
@@ -78,10 +78,10 @@
                 android:orientation="vertical">
                 <TextView
                     android:layout_weight="0.1"
-                    android:padding="5dp"
+                    android:paddingLeft="70dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical|center"
+                    android:gravity="center_vertical|start"
                     android:text="Next week"
                     android:textColor="@android:color/background_dark"
                     android:background="#eff3f3"

@@ -72,7 +72,7 @@ public class NotificationFragment extends Fragment {
         mapContainerLayout =  view.findViewById(R.id.mapContainerToday);
         paramsContainer = mapContainerLayout.getLayoutParams();
         paramsContainer.width=width;
-        paramsContainer.height=  ((Double) (  height /(todayList.getCount()<= 1 ? 3.5 : 2.0))).intValue();
+        paramsContainer.height=  ((Double) (  height /(todayList.getCount()<= 1 ? 3.8 : 2.0))).intValue();
         availableHeight -= paramsContainer.height;
         mapContainerLayout.setLayoutParams(paramsContainer);
 
