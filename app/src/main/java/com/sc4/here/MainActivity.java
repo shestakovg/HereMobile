@@ -1,7 +1,6 @@
 package com.sc4.here;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -12,17 +11,20 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import FireBase.FireBaseProvider;
+
 public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
     private Fragment currentFragmnet;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -45,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    public MainActivity() {
+        FireBaseProvider.getInstance(this);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -61,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
 //        else
         setFragment(ProfileFragment.GetInstance());
         //Activity act = this;
+
+        //FirebaseMessaging.getInstance().subscribeToTopic("news");
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
+        String token = FirebaseInstanceId.getInstance().getToken();
+        //HereFirebaseInstanceIdService idServ = new HereFirebaseInstanceIdService();
 
     }
 
