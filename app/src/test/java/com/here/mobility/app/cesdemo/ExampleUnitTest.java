@@ -1,4 +1,4 @@
-package com.sc4.here;
+package com.here.mobility.app.cesdemo;
 
 import org.junit.Test;
 

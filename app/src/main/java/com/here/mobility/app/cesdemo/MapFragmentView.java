@@ -1,4 +1,4 @@
-package com.sc4.here;
+package com.here.mobility.app.cesdemo;
 
 /**
  * Created by gshestakov on 11/2/2017.
@@ -39,10 +39,10 @@ public class MapFragmentView {
         /* Locate the mapFragment UI element */
         if (parentFragment!= null)
             m_mapFragment = (MapFragment) parentFragment.getChildFragmentManager()
-                    .findFragmentById(R.id.mapfragment);
+                    .findFragmentById(com.here.mobility.app.cesdemo.R.id.mapfragment);
         else
             m_mapFragment = (MapFragment) m_activity.getFragmentManager()
-                .findFragmentById(R.id.mapfragment);
+                .findFragmentById(com.here.mobility.app.cesdemo.R.id.mapfragment);
 
         if (m_mapFragment != null) {
             /* Initialize the MapFragment, results will be given via the called back. */
@@ -77,7 +77,7 @@ public class MapFragmentView {
         // create an image from cafe.png.
         Image marker_img = new Image();
         try {
-            marker_img.setImageResource(R.drawable.marker_blue);
+            marker_img.setImageResource(com.here.mobility.app.cesdemo.R.drawable.marker_blue);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.sc4.here"
+        applicationId "com.here.mobility.app.cesdemo"
         minSdkVersion 23
         targetSdkVersion 26
         versionCode 1

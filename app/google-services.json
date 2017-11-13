@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:120958355775:android:275614b7f06a7960",
         "android_client_info": {
-          "package_name": "com.sc4.here"
+          "package_name": "com.here.mobility.app.cesdemo"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "120958355775-h9kevp4mtg7r8s6edrshdbnuismgskap.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.sc4.here",
+            "package_name": "com.here.mobility.app.cesdemo",
             "certificate_hash": "0c1065092d77d6ea5fac27d17045e3bf4419794b"
           }
         },

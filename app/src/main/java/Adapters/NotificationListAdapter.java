@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.sc4.here.R;
+import com.here.mobility.app.cesdemo.R;
 
 import java.text.ParseException;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.sc4.here;
+package com.here.mobility.app.cesdemo;
 
 
 import android.os.Bundle;
@@ -7,13 +7,11 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.text.ParseException;
 
-import Adapters.CalendarListAdapter;
 import Adapters.NotificationListAdapter;
 
 
@@ -40,11 +38,11 @@ public class NotificationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_notification, container, false);
+        View view = inflater.inflate(com.here.mobility.app.cesdemo.R.layout.fragment_notification, container, false);
         /*********************************************************************************************/
         //Filling lists
-        ListView todayList = view.findViewById(R.id.lvNotificationNew);
-        ListView nextWeekList = view.findViewById(R.id.lvNotificationEarlier);
+        ListView todayList = view.findViewById(com.here.mobility.app.cesdemo.R.id.lvNotificationNew);
+        ListView nextWeekList = view.findViewById(com.here.mobility.app.cesdemo.R.id.lvNotificationEarlier);
         try {
             NotificationListAdapter notificationListAdapterNew =  new NotificationListAdapter(getActivity(), true);
             todayList.setAdapter(notificationListAdapterNew);
@@ -54,7 +52,7 @@ public class NotificationFragment extends Fragment {
             e.printStackTrace();
         }
         /*********************************************************************************************/
-        mapContainerLayout = view.findViewById(R.id.mapContainerLayout);
+        mapContainerLayout = view.findViewById(com.here.mobility.app.cesdemo.R.id.mapContainerLayout);
         DisplayMetrics metrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
@@ -69,14 +67,14 @@ public class NotificationFragment extends Fragment {
         mapContainerLayout.setLayoutParams(paramsContainer);
         m_mapFragmentView = new MapFragmentView(getActivity(), this);
 
-        mapContainerLayout =  view.findViewById(R.id.mapContainerToday);
+        mapContainerLayout =  view.findViewById(com.here.mobility.app.cesdemo.R.id.mapContainerToday);
         paramsContainer = mapContainerLayout.getLayoutParams();
         paramsContainer.width=width;
         paramsContainer.height=  ((Double) (  height /(todayList.getCount()<= 1 ? 3.8 : 2.0))).intValue();
         availableHeight -= paramsContainer.height;
         mapContainerLayout.setLayoutParams(paramsContainer);
 
-        mapContainerLayout =  view.findViewById(R.id.mapContainerNextWeek);
+        mapContainerLayout =  view.findViewById(com.here.mobility.app.cesdemo.R.id.mapContainerNextWeek);
         paramsContainer = mapContainerLayout.getLayoutParams();
         paramsContainer.width=width;
         paramsContainer.height= availableHeight - 100; //((Double) ( height / 3.0)).intValue();

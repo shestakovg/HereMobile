@@ -1,17 +1,13 @@
-package com.sc4.here;
+package com.here.mobility.app.cesdemo;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -47,7 +43,7 @@ public class HereFirebaseMessagingService extends FirebaseMessagingService {
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 //.setLargeIcon(image)/*Notification icon image*/
-                .setSmallIcon(R.drawable.title)
+                .setSmallIcon(com.here.mobility.app.cesdemo.R.drawable.title)
                 .setContentTitle(messageBody)
 //                .setStyle(new NotificationCompat.BigPictureStyle()
 //                        .bigPicture(image))/*Notification with Image*/

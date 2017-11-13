@@ -1,4 +1,4 @@
-package com.sc4.here;
+package com.here.mobility.app.cesdemo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.sc4.here", appContext.getPackageName());
+        assertEquals("com.here.mobility.app.cesdemo", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.sc4.here;
+package com.here.mobility.app.cesdemo;
 
 import android.Manifest;
 import android.app.Fragment;
@@ -11,7 +11,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -32,15 +31,15 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.calendar:
+                case com.here.mobility.app.cesdemo.R.id.calendar:
                     setFragment(CalendarFragment.GetInstance());
                     return true;
-                case R.id.notifications:
+                case com.here.mobility.app.cesdemo.R.id.notifications:
 
                     setFragment(NotificationFragment.GetInstance());
                     //Toast.makeText(getApplicationContext(), "DASH BOARD",  Toast.LENGTH_SHORT).show();
                     return true;
-                case R.id.profile:
+                case com.here.mobility.app.cesdemo.R.id.profile:
                     setFragment(ProfileFragment.GetInstance());
                     return true;
             }
@@ -57,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_main);
+        setContentView(com.here.mobility.app.cesdemo.R.layout.activity_main);
 
         //mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(com.here.mobility.app.cesdemo.R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 //        View v = navigation.getChildAt(2); // number of menu from left
 //        new QBadgeView(this).bindTarget(v).setBadgeNumber(5);
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+        fragmentTransaction.replace(com.here.mobility.app.cesdemo.R.id.fragmentContainer, fragment);
         fragmentTransaction.commit();
         this.currentFragmnet = fragment;
     }

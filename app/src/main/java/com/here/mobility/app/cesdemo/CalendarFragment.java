@@ -1,34 +1,18 @@
-package com.sc4.here;
+package com.here.mobility.app.cesdemo;
 
 
-import android.Manifest;
-import android.app.ActivityManager;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TableRow;
-import android.widget.Toast;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 import Adapters.CalendarListAdapter;
-import db.DatabaseHelper;
-
-import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -62,8 +46,8 @@ public class CalendarFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
         /*********************************************************************************************/
         //Filling lists
-        ListView todayList = view.findViewById(R.id.lvCalendarToday);
-        ListView nextWeekList = view.findViewById(R.id.lvCalendarNextWeek);
+        ListView todayList = view.findViewById(com.here.mobility.app.cesdemo.R.id.lvCalendarToday);
+        ListView nextWeekList = view.findViewById(com.here.mobility.app.cesdemo.R.id.lvCalendarNextWeek);
         try {
             CalendarListAdapter calendarListAdapter =  new CalendarListAdapter(getActivity(), true);
             todayList.setAdapter(calendarListAdapter);
@@ -73,7 +57,7 @@ public class CalendarFragment extends Fragment {
             e.printStackTrace();
         }
         /*********************************************************************************************/
-        mapContainerLayout = (LinearLayout) view.findViewById(R.id.mapContainerLayout);
+        mapContainerLayout = (LinearLayout) view.findViewById(com.here.mobility.app.cesdemo.R.id.mapContainerLayout);
         //TableRow mapContainerLayout =  view.findViewById(R.id.mapRowCalendar);
         DisplayMetrics metrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -89,14 +73,14 @@ public class CalendarFragment extends Fragment {
         mapContainerLayout.setLayoutParams(paramsContainer);
         m_mapFragmentView = new MapFragmentView(getActivity(), this);
 
-        mapContainerLayout =  view.findViewById(R.id.mapContainerToday);
+        mapContainerLayout =  view.findViewById(com.here.mobility.app.cesdemo.R.id.mapContainerToday);
         paramsContainer = mapContainerLayout.getLayoutParams();
         paramsContainer.width=width;
         paramsContainer.height= ((Double) (  height /(todayList.getCount()== 1 ? 4.5 : 3.0))).intValue();
         availableHeight -= paramsContainer.height;
         mapContainerLayout.setLayoutParams(paramsContainer);
 
-        mapContainerLayout =  view.findViewById(R.id.mapContainerNextWeek);
+        mapContainerLayout =  view.findViewById(com.here.mobility.app.cesdemo.R.id.mapContainerNextWeek);
         paramsContainer = mapContainerLayout.getLayoutParams();
         paramsContainer.width=width;
         paramsContainer.height= availableHeight - 100; //((Double) ( height / 3.0)).intValue();

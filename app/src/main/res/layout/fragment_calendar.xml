@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:id="@+id/calendarLayout"
     android:layout_height="match_parent"
-    tools:context="com.sc4.here.CalendarFragment">
+    tools:context=".CalendarFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TableLayout

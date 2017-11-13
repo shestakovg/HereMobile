@@ -1,3 +1,3 @@
-Package name com.sc4.here
+Package name com.here.mobility.app.cesdemo
 App ID GEgS6WeqdobFkljxXm4S
 App Code Q5e07dNNBxfDJuK8t1gpFg

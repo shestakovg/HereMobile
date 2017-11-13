@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sc4.here">
+    package="com.here.mobility.app.cesdemo">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -36,13 +36,13 @@
 
         <meta-data
             android:name="com.here.android.maps.appid"
-            android:value="GEgS6WeqdobFkljxXm4S" />
+            android:value="1d1KnBhh3kPwOhs8pEC0" />
         <meta-data
             android:name="com.here.android.maps.apptoken"
-            android:value="Q5e07dNNBxfDJuK8t1gpFg" />
+            android:value="V8KhDlR75R2sUGpxZ7vnmQ" />
         <meta-data
             android:name="com.here.android.maps.license.key"
-            android:value="{YOUR_LICENSE_KEY}" />
+            android:value="JyA/QzDFn9kPtXxf3cQ2AN6IHkk8sEAQTamNwOT8yZkPf4uvDbdKJuH81qqvbVnshrw+EZTSWpQI4BOnuIVOBfdqZe9KCzhgTQXUF4dEWdYTaZH006887MB9vVRbPrjAh5UrdAuhdXqhkKodvtHkEBWGBI8MADPUivr0UP8TrCYVJ9/m5ds+sGl69hNMhZ9cSi7wvaSz4E7zjbV7r7o8Ad7MVmG8HD/DUOWP6YK5ETxM8hx9yH/NECH7+6jomM2URJQ8tmN1b9tvlyUfG0Ml9xZYb0SqGx9PjUwifVsFifNnxww/685tj6PnLp4gkV+gS1G9otNwy8tM4JeSdeeWD19sD9Z7XYLHEDXpLcI7flfGbvjB/E0U0BaENlA4ulkoltSRjkhk4UsyNhNFINODT9uxxtTWurAaf2mWDEskE9h13AKpqpCOuRCe6tuq1RLjwzO9LexWEyFhnwcv+zxILavlQmyP5meEq/xrwDTBzk9FVo62iqbDovXdzn8zxLeuL9L4kUofpgBeVIiWmPzWvzHdFsZEuHqpANiKYJJbSlbXojwmowwzBBDc9dHTgFiTBa0s2qvm25CzXPp89/XirwNLNjupe+X5/MJSUiUNVCA0+KFP+EJ+8MRnrltNmzkPvyA9bBpiBzMtLkjYd9RJdC65HfC85jEhV5RYZxzZPN0=" />
 
         <service
             android:name="com.here.android.mpa.service.MapService"
