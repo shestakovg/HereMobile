@@ -69,12 +69,9 @@ public class MainActivity extends AppCompatActivity {
 //            setFragment(this.currentFragmnet);
 //        else
         setFragment(ProfileFragment.GetInstance());
-        //Activity act = this;
-
-        //FirebaseMessaging.getInstance().subscribeToTopic("news");
         FirebaseMessaging.getInstance().subscribeToTopic("news");
         String token = FirebaseInstanceId.getInstance().getToken();
-        //HereFirebaseInstanceIdService idServ = new HereFirebaseInstanceIdService();
+
 
     }
 
