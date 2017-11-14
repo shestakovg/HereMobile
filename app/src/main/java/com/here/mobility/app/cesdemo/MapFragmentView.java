@@ -60,8 +60,20 @@ public class MapFragmentView {
                         LocationObject lObj = LocationSettings.getCenterPoint();
                         m_map.setCenter(new GeoCoordinate(lObj.getLat(), lObj.getLng(), 0.0),
                                 Map.Animation.NONE);
-                        m_map.setZoomLevel(14);
-                        createMapMarker(LocationSettings.getTestMarker());
+                        double mz = m_map.getMinZoomLevel();
+                        double maxz = m_map.getMaxZoomLevel();
+                        m_map.setZoomLevel(14.0);
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        m_map.setZoomLevel(4);
+                        for (LocationObject obj : LocationSettings.getDefaultMarkers())
+                        {
+                            createMapMarker(obj);
+                        }
+//                        createMapMarker(LocationSettings.getTestMarker());
                     } else {
                         Toast.makeText(m_activity,
                                 "ERROR: Cannot initialize Map with error " + error,
@@ -77,7 +89,7 @@ public class MapFragmentView {
         // create an image from cafe.png.
         Image marker_img = new Image();
         try {
-            marker_img.setImageResource(com.here.mobility.app.cesdemo.R.drawable.marker_blue);
+            marker_img.setImageResource(R.drawable.mapmarker3);
         } catch (IOException e) {
             e.printStackTrace();
         }

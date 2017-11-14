@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/appprofileoff2x"
         android:title="@string/title_profile"
         />
 
     <item
         android:id="@+id/calendar"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/apptimelineon2x"
         android:title="@string/title_calendar"
         />
 
     <item
         android:id="@+id/notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/bell"
         android:title="@string/title_notifications"
         />
 

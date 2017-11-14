@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -7,14 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <LinearLayout
-        android:id="@+id/tableContainer"
+        android:id="@+id/containerLayout"
         android:layout_width="match_parent"
-
+        android:layout_alignParentTop="true"
         android:layout_height="wrap_content">
     <TableLayout
         android:layout_width="match_parent"
-
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TableRow
             android:background="#000000"
@@ -22,12 +21,12 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/logo_image"
                 android:layout_width="fill_parent"
-                android:src="@drawable/herelogo"
-                android:layout_height="30dp"
+                android:layout_height="fill_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/title"
                 />
- <!--android:src="@drawable/title"-->
+
 
         </TableRow>
         <TableRow android:layout_height="match_parent">
@@ -36,6 +35,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </FrameLayout>
+        </TableRow>
+        <TableRow android:layout_height="match_parent">
+            <TextView android:text="AAAAAAAAAAAAAAAA" android:layout_alignParentBottom="true"/>
         </TableRow>
     </TableLayout>
     </LinearLayout>
@@ -53,25 +55,20 @@
         <!--app:layout_constraintRight_toRightOf="parent"-->
         <!--app:menu="@menu/navigation" />-->
     <LinearLayout
-        android:id="@+id/navbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignBottom="@id/containerLayout"
+        android:layout_height="wrap_content">
+            <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+                android:id="@+id/bnve_no_text"
+                style="@style/bnve_primary_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-        >
-    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-        android:id="@+id/bnve_no_text"
-
-        style="@style/bnve_primary_bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="0dp"
-        android:background="?android:attr/windowBackground"
-        app:itemIconTint="@color/selector_item_gray_color"
-
-        app:itemTextColor="@color/selector_item_gray_color"
-        app:menu="@menu/navigation" />
+                android:layout_margin="0dp"
+                android:background="?android:attr/windowBackground"
+                app:itemIconTint="@color/selector_item_gray_color"
+                app:itemTextColor="@color/selector_item_gray_color"
+                app:menu="@menu/navigation" />
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

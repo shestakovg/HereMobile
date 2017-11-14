@@ -10,23 +10,33 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.larvalabs.svgandroid.SVG;
+import com.larvalabs.svgandroid.SVGParser;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import Common.SvgImage;
 import FireBase.FireBaseProvider;
+import q.rorbin.badgeview.Badge;
+import q.rorbin.badgeview.QBadgeView;
+
 
 public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
     private Fragment currentFragmnet;
-
+    private BottomNavigationViewEx navigation;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -63,22 +73,50 @@ public class MainActivity extends AppCompatActivity {
         //mTextMessage = (TextView) findViewById(R.id.message);
 //        BottomNavigationView navigation = (BottomNavigationView) findViewById(com.here.mobility.app.cesdemo.R.id.navigation);
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-         BottomNavigationViewEx navigation =  findViewById(com.here.mobility.app.cesdemo.R.id.bnve_no_text);
+         navigation =  findViewById(com.here.mobility.app.cesdemo.R.id.bnve_no_text);
          navigation.setTextVisibility(false);
+         navigation.enableAnimation(false);
+         navigation.enableShiftingMode(false);
+         navigation.enableItemShiftingMode(false);
+
          navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        addBadgeAt(2,1);
         // navigation.setVisibility(View.INVISIBLE);
-//        View v = navigation.getChildAt(2); // number of menu from left
-//        new QBadgeView(this).bindTarget(v).setBadgeNumber(5);
+/*********************************************************************************************************************************/
+//        LinearLayout mapContainerLayout = (LinearLayout) findViewById(R.id.tableContainer);
+//        LinearLayout navbar = (LinearLayout) findViewById(com.here.mobility.app.cesdemo.R.id.navbar);
+//        DisplayMetrics metrics = new DisplayMetrics();
+//        this.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+//        int width = metrics.widthPixels;
+//        int height = metrics.heightPixels;
+//        int availableHeight = height;
+//       //DisplayMetrics metricsBar = new DisplayMetrics();
+//        //navbar.getDisplay().getMetrics(metricsBar);
+//
+//        ViewGroup.LayoutParams paramsContainer = mapContainerLayout.getLayoutParams();
+//        paramsContainer.width=width;
+//        paramsContainer.height= height - 210;// navbar.getHeight();
+//        availableHeight -= paramsContainer.height;
+//        mapContainerLayout.setLayoutParams(paramsContainer);
+/*********************************************************************************************************************************/
+
         requestPermissions();
-//        if (this.currentFragmnet!=null)
-//            setFragment(this.currentFragmnet);
-//        else
+
         setFragment(ProfileFragment.GetInstance());
         FirebaseMessaging.getInstance().subscribeToTopic("news");
         String token = FirebaseInstanceId.getInstance().getToken();
 
+        ImageView imageView = (ImageView) findViewById(com.here.mobility.app.cesdemo.R.id.logo_image);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+////        SVG svg = SVGParser.getSVGFromResource(getResources(), R.drawable.header_logo);
+//////The following is needed because of image accelaration in some devices such as samsung
+////        imageView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+////        imageView.setImageDrawable(svg.createPictureDrawable());
+////        imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+//        SvgImage rainSVG = new SvgImage(MainActivity.this, R.id.logo_image, R.drawable.demo_logo);
 
     }
+
 
     @Override
     protected void onResume() {
@@ -146,5 +184,20 @@ public class MainActivity extends AppCompatActivity {
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    private Badge addBadgeAt(int position, int number) {
+        // add badge
+        return new QBadgeView(this)
+                .setBadgeNumber(number)
+                .setGravityOffset(40, 3, true)
+                .bindTarget(navigation.getBottomNavigationItemView(position))
+                .setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
+                    @Override
+                    public void onDragStateChanged(int dragState, Badge badge, View targetView) {
+                        if (Badge.OnDragStateChangedListener.STATE_SUCCEED == dragState)
+                            Toast.makeText(MainActivity.this,"tips_badge_removed", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
