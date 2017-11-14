@@ -11,10 +11,12 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,8 +61,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(com.here.mobility.app.cesdemo.R.layout.activity_main);
 
         //mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(com.here.mobility.app.cesdemo.R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+//        BottomNavigationView navigation = (BottomNavigationView) findViewById(com.here.mobility.app.cesdemo.R.id.navigation);
+//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+         BottomNavigationViewEx navigation =  findViewById(com.here.mobility.app.cesdemo.R.id.bnve_no_text);
+         navigation.setTextVisibility(false);
+         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        // navigation.setVisibility(View.INVISIBLE);
 //        View v = navigation.getChildAt(2); // number of menu from left
 //        new QBadgeView(this).bindTarget(v).setBadgeNumber(5);
         requestPermissions();
