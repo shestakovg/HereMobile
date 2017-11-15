@@ -16,8 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TableRow;
 import android.widget.Toast;
 
+import com.Interface.IMainActivity;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -33,7 +35,7 @@ import q.rorbin.badgeview.Badge;
 import q.rorbin.badgeview.QBadgeView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IMainActivity {
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
     private Fragment currentFragmnet;
     private BottomNavigationViewEx navigation;
@@ -101,13 +103,13 @@ public class MainActivity extends AppCompatActivity {
 /*********************************************************************************************************************************/
 
         requestPermissions();
-
-        setFragment(ProfileFragment.GetInstance());
+        if (this.currentFragmnet== null)
+            setFragment(WelcomeFragment.GetInstance(this));
         FirebaseMessaging.getInstance().subscribeToTopic("news");
         String token = FirebaseInstanceId.getInstance().getToken();
 
-        ImageView imageView = (ImageView) findViewById(com.here.mobility.app.cesdemo.R.id.logo_image);
-        imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+//        ImageView imageView = (ImageView) findViewById(com.here.mobility.app.cesdemo.R.id.logo_image);
+//        imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 ////        SVG svg = SVGParser.getSVGFromResource(getResources(), R.drawable.header_logo);
 //////The following is needed because of image accelaration in some devices such as samsung
 ////        imageView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
@@ -127,6 +129,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void setFragment(Fragment fragment)
     {
+       // TableRow row =  findViewById(R.id.logo_image_row);
+        if (fragment instanceof WelcomeFragment) {
+            navigation.setVisibility(View.INVISIBLE);
+         //   row.setVisibility(View.INVISIBLE);
+//            ViewGroup.LayoutParams paramsContainer = row.getLayoutParams();
+//            paramsContainer.height =0;
+           // row.setMinimumHeight(0);
+           // row.setLayoutParams(paramsContainer);
+        }
+        else {
+            navigation.setVisibility(View.VISIBLE);
+           // row.setVisibility(View.VISIBLE);
+        }
+
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(com.here.mobility.app.cesdemo.R.id.fragmentContainer, fragment);
@@ -199,5 +215,11 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this,"tips_badge_removed", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @Override
+    public void showFragment() {
+        setFragment(CalendarFragment.GetInstance());
+        navigation.setCurrentItem(1);
     }
 }

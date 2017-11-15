@@ -89,7 +89,7 @@ public class MapFragmentView {
         // create an image from cafe.png.
         Image marker_img = new Image();
         try {
-            marker_img.setImageResource(R.drawable.mapmarker3);
+            marker_img.setImageResource(R.drawable.mapmarker4);
         } catch (IOException e) {
             e.printStackTrace();
         }
